@@ -33,7 +33,7 @@ public class UserService {
         log.info("Fetching user with id : " + userId);
         User user = userRepository.findById(userId)
                         .orElseThrow(() -> new Exception("User with id : " + userId + " not found."));
-        Department department = restTemplate.getForObject("http://localhost:9001/departments/" + user.getDepartmentId(),
+        Department department = restTemplate.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(),
                                                             Department.class);
         return UserWithDepartment.builder()
                                 .userId(user.getUserId())
